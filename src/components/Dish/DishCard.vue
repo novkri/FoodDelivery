@@ -17,7 +17,7 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab delectus
         dolorem, quam qui quisquam voluptatum.
       </p>
-      <button class="add-button">В корзину</button>
+      <button class="add-button" @click="addToCart(item)">В корзину</button>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@
 import { defineComponent, PropType, ref } from "vue";
 
 import Dish from "@/types/Dish";
+import { useMainStore } from "@/store";
 
 export default defineComponent({
   name: "DishCard",
@@ -36,20 +37,13 @@ export default defineComponent({
     },
   },
   setup() {
-    const isDescriptionShow = ref(false);
+    const store = useMainStore();
 
-    const showDescription = () => {
-      isDescriptionShow.value = true;
+    const addToCart = (item: Dish) => {
+      store.addDish(item);
     };
-
-    const hideDescription = () => {
-      isDescriptionShow.value = false;
-    };
-
     return {
-      isDescriptionShow,
-      showDescription,
-      hideDescription,
+      addToCart,
     };
   },
 });
@@ -76,6 +70,7 @@ export default defineComponent({
   &__image {
     width: 100%;
     height: auto;
+    background-color: #76acfb;
   }
 
   &__overlay {
