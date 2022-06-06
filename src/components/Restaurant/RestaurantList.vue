@@ -16,14 +16,18 @@
 import { defineComponent, ref } from "vue";
 import RestaurantCard from "@/components/Restaurant/RestaurantCard.vue";
 import Restaurant from "@/types/Restaurant";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "RestaurantList",
   components: { RestaurantCard },
-  props: {
-    msg: String,
-  },
-  setup() {
+  props: ["name"],
+  // props: {
+  //
+  // },
+  setup(props, ctx) {
+    const router = useRouter();
+
     const restItems = ref<Restaurant[]>([
       {
         id: 1,
@@ -113,8 +117,17 @@ export default defineComponent({
     ]);
 
     const chooseRestaurant = (item: Restaurant) => {
-      console.log("chhosen: ", item);
+      console.log("chosen: ", item);
       //   go to this restaurant menu
+      router.push({
+        name: "about",
+        params: {
+          // name: item.title,
+
+          //todo routing
+          id: item.id,
+        },
+      });
     };
 
     return {
