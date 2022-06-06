@@ -1,0 +1,15 @@
+{
+  "restaurants": [
+    { "id": 1, "title": "Rest 1" },
+    { "id": 2, "title": "Rest 2" },
+    { "id": 3, "title": "Rest 3" }
+  ],
+  "dishes": [
+    { "id": 1, "body": "some dish 1", "postId": 1 },
+    { "id": 2, "body": "some dish 2", "postId": 2 },
+    { "id": 3, "body": "some dish 3", "postId": 2 },
+    { "id": 4, "body": "some dish 4", "postId": 3 },
+    { "id": 5, "body": "some dish 5", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

@@ -1,17 +1,23 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <RestaurantList />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue";
+import RestaurantList from "@/components/Restaurant/RestaurantList.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
-    HelloWorld,
+    RestaurantList,
   },
 });
 </script>
+<style scoped lang="scss">
+.home {
+  //   todo ?!
+  min-height: calc(100vh - 74px);
+}
+</style>
