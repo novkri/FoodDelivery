@@ -2,7 +2,7 @@
   <div class="restaurants-list">
     <transition-group name="list-transition">
       <RestaurantCard
-        v-for="item in items"
+        v-for="item in data"
         :key="item.id"
         :item="item"
         class="list-item"
@@ -12,17 +12,18 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { defineComponent, defineProps, PropType, ref } from "vue";
+<script async setup lang="ts">
+import { defineComponent, defineProps, onMounted, PropType, ref } from "vue";
 import RestaurantCard from "@/components/Restaurant/RestaurantCard.vue";
 import Restaurant from "@/types/Restaurant";
 import { useRouter } from "vue-router";
+import { useFetch } from "@/assets/composables/fetch";
 
 const props = defineProps({
-  items: {
-    required: true,
-    type: Array as PropType<Restaurant[]>,
-  },
+  // items: {
+  //   required: true,
+  //   type: Array as PropType<Restaurant[]>,
+  // },
 });
 
 const router = useRouter();
@@ -35,6 +36,41 @@ const chooseRestaurant = (item: Restaurant) => {
     },
   });
 };
+
+const { data, error, isLoading } = useFetch<Restaurant>(
+  "http://localhost:3000/restaurants"
+);
+
+//  todo Q async component (+)
+// const data = await fetch("http://localhost:3000/restaurants").then((res) =>
+//   res.json()
+// );
+
+// const data = ref<Restaurant[]>([]);
+// const error = ref<ErrorEvent | null>(null);
+// const isLoading = ref(true);
+//
+// todo Q async component
+// const fetchDataAsync = async () => {
+//   await fetch("http://localhost:3000/restaurants")
+//     .then((res) => res.json())
+//     .then((json) => {
+//       data.value = json;
+//     })
+//     .catch((err) => {
+//       error.value = err;
+//     })
+//     .finally(() => {
+//       isLoading.value = false;
+//     });
+//   // }, 10000);
+// };
+//
+// onMounted(() => {
+//   setTimeout(() => {
+//     fetchDataAsync();
+//   }, 5000);
+// });
 </script>
 
 <style scoped lang="scss">
