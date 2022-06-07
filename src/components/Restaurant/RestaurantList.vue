@@ -46,8 +46,8 @@ const { data, error, isLoading } = useFetch<Restaurant>(
 //   res.json()
 // );
 
-// const data = ref<Restaurant[]>([]);
-// const error = ref<ErrorEvent | null>(null);
+// const data = ref<Restaurant[]>();
+// const error = ref<ErrorEvent>();
 // const isLoading = ref(true);
 //
 // todo Q async component

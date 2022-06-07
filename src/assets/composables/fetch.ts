@@ -1,8 +1,8 @@
 import { ref } from "vue";
 
 export function useFetch<T>(url: string) {
-  const data = ref<T[]>([]);
-  const error = ref<ErrorEvent | null>(null);
+  const data = ref<T[]>();
+  const error = ref<ErrorEvent>();
   const isLoading = ref(true);
 
   fetch(url)

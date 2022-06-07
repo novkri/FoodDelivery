@@ -22,7 +22,13 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["increment", "decrement"]);
+const emit = defineEmits<{
+  (e: "increment"): void;
+  (e: "decrement"): void;
+  // example :
+  (e: "change", id: number): void;
+}>();
+
 const decrement = () => {
   emit("decrement");
 };

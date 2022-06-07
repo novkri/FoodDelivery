@@ -65,7 +65,7 @@ const decrementAmount = (id: number) => {
   store.decrementDishAmount(id);
 };
 
-const currentRestaurant = ref<Restaurant | null>(null);
+const currentRestaurant = ref<Restaurant>();
 
 const getRestaurantInfo = (id: string | number) => {
   if (id) {
@@ -75,7 +75,7 @@ const getRestaurantInfo = (id: string | number) => {
         currentRestaurant.value = value as Restaurant;
       })
       .catch((err) => {
-        currentRestaurant.value = null;
+        currentRestaurant.value = undefined;
         throw new Error(err);
       });
   }

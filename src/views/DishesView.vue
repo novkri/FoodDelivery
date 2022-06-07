@@ -37,7 +37,8 @@ const route = useRoute();
 const router = useRouter();
 const store = useMainStore();
 
-const currentRestaurant = ref<Restaurant | null>(null);
+//todo вынести отсбюда и из ShoppingCart
+const currentRestaurant = ref<Restaurant>();
 
 // get current restaurant name
 onMounted(() => {
@@ -48,7 +49,7 @@ onMounted(() => {
         currentRestaurant.value = value as Restaurant;
       })
       .catch((err) => {
-        currentRestaurant.value = null;
+        currentRestaurant.value = undefined;
         throw new Error(err);
       });
   }
