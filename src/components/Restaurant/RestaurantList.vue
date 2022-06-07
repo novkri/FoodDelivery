@@ -40,14 +40,13 @@ const chooseRestaurant = (item: Restaurant) => {
 <style scoped lang="scss">
 .restaurants-list {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   padding-top: 8px;
 }
 
 .list-item {
   transition: all 0.2s ease;
-  width: calc(100% / 4 - (20px * 3));
+  width: calc(100% / 4 - (20px * 3 / 4));
   margin: 0 20px 20px 0;
 
   &:nth-child(4n) {

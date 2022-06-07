@@ -3,6 +3,7 @@
  * Здесь должны быть дефолтные стили элементов
  */
 
+
 /**
  * Reset default styles
  */
@@ -24,10 +25,9 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-  //font-family: $raleway-font; <-- Закоменчено, т.к. конфликтует со стилями EToaster (При необходимости раскоментить) - нужно раскоментить, т.к. этот стиль везде применяется, но сперва разобраться с конфликтом в тостера
-  //color: $dark;
   font-feature-settings: 'pnum' on, 'lnum' on;
   font-variant: no-common-ligatures;
+  //letter-spacing: 0.6px  font-family: $roboto;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -68,7 +68,7 @@ table {
 button, input, span {
   border: none;
   outline: none;
-  font-family: $raleway-font;
+
 }
 
 img {
@@ -79,15 +79,6 @@ img {
   width: 10px;
   height: 10px;
 }
-
-//::-webkit-scrollbar-track {
-//  background-color: $gray-100;
-//}
-//
-//::-webkit-scrollbar-thumb {
-//  background-color: $gray-300;
-//  border-radius: 8px;
-//}
 
 /**
  * Transition to pages
@@ -160,7 +151,6 @@ h6 {
 .action-btn {
   padding: 15px;
   color: white;
-
   font-weight: 500;
 
   &:hover {

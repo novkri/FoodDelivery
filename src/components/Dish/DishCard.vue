@@ -7,7 +7,7 @@
         class="card__image"
         alt="image"
       />
-      <img v-else src="@/assets/empty.jpg" alt="logo" class="card__image" />
+      <img v-else src="@/assets/img/empty.jpg" alt="logo" class="card__image" />
     </div>
     <div class="card__overlay">
       <div class="card__header">
@@ -19,9 +19,8 @@
           >
         </div>
       </div>
-      <p class="card__description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab delectus
-        dolorem, quam qui quisquam voluptatum.
+      <p v-if="item.description" class="card__description">
+        {{ item.description }}
       </p>
       <button class="add-button action-btn" @click="addToCart(item)">
         В корзину
@@ -58,30 +57,21 @@ const addToCart = (item: Dish) => {
 </script>
 
 <style scoped lang="scss">
-// todo пока что такие же стили как и у карточки ресторана
+@import "@/assets/styles/card.scss";
+
 .card {
-  //border: 1px solid;
-  border-radius: 16px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  box-shadow: 3px 4px 16px 0px rgb(217 217 217 / 72%);
-  overflow: hidden;
+  &:hover {
+    box-shadow: 3px 4px 16px 0px rgb(217 217 217 / 72%);
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 
   .image {
-    //  height: 164px;
-    //  border-radius: 16px 16px 0 0;
-    height: 90%;
+    height: 100%;
   }
 
   &__image {
-    width: 100%;
-    height: auto;
-
-    // todo ???
-    height: 100%;
-    object-fit: cover;
+    height: 85%;
   }
 
   &__overlay {
@@ -102,14 +92,11 @@ const addToCart = (item: Dish) => {
 
   &__header {
     position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2em;
-    padding: 2em;
-    border-radius: 16px;
-    background-color: #fff;
+    padding: 1.8em;
     transform: translateY(-100%);
     transition: 0.2s ease-in-out;
+    display: flex;
+    flex-direction: row;
   }
 
   &:hover .card__header {
@@ -124,18 +111,13 @@ const addToCart = (item: Dish) => {
 
   &__subtitle {
     display: flex;
-    //flex-direction: column;
+    font-weight: 300;
   }
 
   &__description {
     padding: 0 2em 2em;
     margin: 0;
     color: #d7bdca;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
   }
 
   .add-button {

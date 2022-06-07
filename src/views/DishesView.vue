@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineProps, onMounted, provide, ref } from "vue";
+import { defineProps, onMounted, provide, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ShoppingCart from "@/components/ShoppingCart.vue";
 import DishList from "@/components/Dish/DishList.vue";
@@ -39,6 +39,7 @@ const store = useMainStore();
 
 const currentRestaurant = ref<Restaurant | null>(null);
 
+// get current restaurant name
 onMounted(() => {
   if (typeof route.params.id === "string") {
     store
@@ -78,7 +79,7 @@ const goBack = () => {
   background: transparent;
   font-size: 14px;
   line-height: 120%;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   padding: 8px;
   transition: 0.2s all ease;
 

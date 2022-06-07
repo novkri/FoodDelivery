@@ -1,6 +1,5 @@
 <template>
   <div class="dishes-list">
-    <!--    todo if no dishes -->
     <transition-group name="list-transition">
       <DishCard
         v-for="item in items"

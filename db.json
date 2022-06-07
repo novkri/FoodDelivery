@@ -2,37 +2,37 @@
   "restaurants": [
     {
       "id": 1,
-      "title": "111",
+      "title": "Restaurant 111",
       "rating": 4.5,
-      "address": "gdfgdf",
-      "description": "dfgdfg"
+      "address": "address",
+      "description": "description"
     },
     {
       "id": 2,
-      "title": "222",
+      "title": "Restaurant 222",
       "rating": 4.8,
-      "address": "dsf dfgdf "
+      "address": "address dfgdf "
     },
     {
       "id": 3,
-      "title": "333",
+      "title": "Restaurant 333",
       "rating": 4.4,
-      "address": "5ygf gdfg ",
-      "description": "dffghgfh dfs sdddddddddddddd sfl gdfg"
+      "address": "address gdfg ",
+      "description": "description dfs sdddddddddddddd sfl gdfg"
     },
     {
       "id": 4,
       "title": "444",
       "rating": 4,
-      "address": "5ygf gdfgfgdfg "
+      "address": "address gdfgfgdfg "
     },
     {
       "id": 5,
       "title": "555",
       "rating": 3.4,
-      "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg",
-      "image":
+      "address": "address gdfg ",
+      "description": "description dfs sdddddddddddddd sfl gdfg",
+      "image": ""
     }
   ],
   "dishes": [
@@ -62,10 +62,10 @@
         "title": "Баскет L 26 крыльев",
         "weight": 700,
         "calories": 304,
-        "description": "26 куриных крылышек в острой панировке",
+        "description": "lorem ipsum lorem ipsum",
         "price": 779,
         "section": "Баскеты",
-        "restaurant_id": 2
+        "restaurant_id": 1
       },
       {
         "id": 4,
@@ -75,7 +75,7 @@
         "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
         "price": 189,
         "section": "Твистеры",
-        "restaurant_id": 3,
+        "restaurant_id": 1,
         "image": "https://i.imgur.com/Tm0nlyP.jpeg"
       },
       {
@@ -86,7 +86,7 @@
         "description": "26 куриных крылышек в острой панировке",
         "price": 779,
         "section": "Баскеты",
-        "restaurant_id": 3,
+        "restaurant_id": 1,
         "image": "https://i.imgur.com/XH93QTm.jpeg"
       },
       {

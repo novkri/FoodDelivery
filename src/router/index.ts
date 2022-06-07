@@ -12,6 +12,9 @@ const routes: Array<RouteRecordRaw> = [
     name: "menu",
     component: () => import("../views/DishesView.vue"),
     props: true,
+    meta: {
+      layout: "sidebarLayout",
+    },
   },
 ];
 

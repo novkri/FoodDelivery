@@ -16,6 +16,7 @@ export const useMainStore = defineStore({
         order: [],
       },
     } as RootState),
+
   getters: {
     getOrder: (state) => state.cart.order,
     getOrderLength: (state) => state.cart.order.length,
@@ -26,7 +27,6 @@ export const useMainStore = defineStore({
         acc += totalItemPrice;
         return acc;
       }, 0),
-    // getClass: (state) => state.character.class,
   },
 
   actions: {
@@ -38,7 +38,7 @@ export const useMainStore = defineStore({
       this.cart.restaurant_id = id;
     },
 
-    //todo here? async ?
+    // todo Q?
     getRestaurantInfo(id: string | number) {
       return new Promise<Restaurant | Error>((resolve, reject) => {
         fetch(`http://localhost:3000/restaurants/${id}`)
@@ -47,7 +47,6 @@ export const useMainStore = defineStore({
             resolve(json as Restaurant);
           })
           .catch((error) => {
-            console.log(error);
             reject(error as Error);
           });
       });
@@ -67,26 +66,21 @@ export const useMainStore = defineStore({
         if (el.dish.id === id) {
           el.amount += 1;
         }
-
         return el;
       });
-      // this.cart.order.find(el => el.dish.id === id).amount += 1
     },
 
     decrementDishAmount(id: number) {
       this.cart.order = this.cart.order.map((el) => {
         if (el.dish.id === id) {
-          //todo check if 0
           if (el.amount === 1) {
             this.deleteDish(id);
           } else {
             el.amount -= 1;
           }
         }
-
         return el;
       });
-      // this.cart.order.find(el => el.dish.id === id).amount += 1
     },
 
     deleteDish(id: number) {

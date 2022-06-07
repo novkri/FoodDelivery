@@ -10,7 +10,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "DefaultLayout",
+  name: "SidebarLayout",
 });
 </script>
 
@@ -19,7 +19,7 @@ export default defineComponent({
   padding-left: 100px;
   padding-right: 100px;
   max-width: 1500px;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0 0;
 }
 
 .content {

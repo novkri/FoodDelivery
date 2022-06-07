@@ -1,5 +1,4 @@
 <template>
-  <!--  is-empty class -->
   <div class="basket">
     <div class="basket-empty" v-if="getOrder.length === 0">
       В корзине пока пусто
@@ -27,13 +26,8 @@
           </button>
         </div>
       </div>
-
-      <!--       todo get total-->
-      <p class="total">Total: {{ getTotalPrice }}</p>
-
-      <!--      <span>{{ item.amount }}</span>-->
     </div>
-    <!--    provide inject or pinia -->
+    <p v-if="getTotalPrice" class="total">Total: {{ getTotalPrice }} Р</p>
   </div>
 </template>
 
@@ -42,9 +36,7 @@ import { computed, defineProps, onMounted, ref, watch } from "vue";
 import { useMainStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
-
 import CounterButton from "@/components/CounterButton.vue";
-import { useFetch } from "@/assets/composables/fetch";
 import Restaurant from "@/types/Restaurant";
 
 // mixin example
@@ -93,11 +85,8 @@ onMounted(() => {
 });
 
 watch(getRestaurantId, (newId) => {
-  getRestaurantInfo(newId as string);
+  getRestaurantInfo(newId as number);
 });
-const { data, error } = useFetch(
-  "https://api.spoonacular.com/food/menuItems/1"
-);
 </script>
 
 <style scoped lang="scss">
@@ -106,7 +95,6 @@ const { data, error } = useFetch(
   width: 344px;
   height: auto;
   right: 0;
-  //top: 74px;
   top: 0;
   bottom: 0;
   left: auto;
@@ -128,6 +116,7 @@ const { data, error } = useFetch(
 
   .list {
     height: 100%;
+    overflow-y: scroll;
 
     .list-item {
       display: flex;
@@ -135,14 +124,13 @@ const { data, error } = useFetch(
       border-top: 1px solid #eee;
       padding: 15px;
 
-      // todo not workibg
-      //&:last-child {
-      //  border-bottom: 1px solid #eee;
-      //}
-
       .header {
         display: flex;
         justify-content: space-between;
+      }
+
+      .price {
+        font-weight: bold;
       }
 
       .actions {
@@ -166,9 +154,11 @@ const { data, error } = useFetch(
   .total {
     position: fixed;
     bottom: 0;
-    padding: 15px;
+    padding: 2em;
     width: calc(344px - 15px - 15px);
     border-top: 1px solid #eee;
+    font-weight: bold;
+    background: white;
   }
 }
 </style>
