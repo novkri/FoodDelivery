@@ -28,14 +28,9 @@ const props = defineProps({
 const router = useRouter();
 
 const chooseRestaurant = (item: Restaurant) => {
-  console.log("chosen: ", item);
-  //   go to this restaurant menu
   router.push({
     name: "menu",
     params: {
-      // name: item.title,
-
-      //todo routing
       id: item.id,
     },
   });

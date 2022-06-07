@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <div class="link-wrapper">
       <button class="go-back-link" @click="goBack">&lt; Все рестораны</button>
     </div>
@@ -24,7 +24,11 @@ import Dish from "@/types/Dish";
 import { useMainStore } from "@/store";
 import Restaurant from "@/types/Restaurant";
 
-const props = defineProps({});
+const props = defineProps({
+  id: {
+    type: String,
+  },
+});
 
 const route = useRoute();
 const router = useRouter();
@@ -59,7 +63,7 @@ const goBack = () => {
 <style scoped lang="scss">
 .home {
   // todo вынести в layout
-  min-height: calc(100vh - 74px);
+  //min-height: calc(100vh - 74px);
 }
 
 .link-wrapper {

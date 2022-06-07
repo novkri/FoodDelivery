@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <div v-if="data.length === 0">No data</div>
     <RestaurantList v-else :items="data" />
   </div>
@@ -15,9 +15,4 @@ const { data, error } = useFetch<Restaurant>(
   "http://localhost:3000/restaurants"
 );
 </script>
-<style scoped lang="scss">
-.home {
-  //   todo ?!
-  min-height: calc(100vh - 74px);
-}
-</style>
+<style scoped lang="scss"></style>

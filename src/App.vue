@@ -5,11 +5,24 @@
       <!--      <router-link to="/">Home</router-link> |-->
       <!--      <router-link to="/about">Menu</router-link>-->
     </nav>
-    <!--    <EButton>sdfsdf</EButton>-->
-    <router-view />
+
+    <component :is="layout">
+      <router-view />
+    </component>
   </div>
 </template>
 
+<script setup lang="ts">
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+
+import defaultLayout from "@/layouts/DefaultLayout.vue";
+
+const route = useRoute();
+const layout = computed(() => {
+  return route.meta.layout || defaultLayout;
+});
+</script>
 <style lang="scss">
 #app {
   background-image: linear-gradient(
