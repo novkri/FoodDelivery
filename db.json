@@ -31,59 +31,8 @@
       "title": "555",
       "rating": 3.4,
       "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
-    },
-    {
-      "id": 34,
-      "title": "444",
-      "rating": 4,
-      "address": "5ygf gdfgfgdfg "
-    },
-    {
-      "id": 53,
-      "title": "555",
-      "rating": 3.4,
-      "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
-    },
-    {
-      "id": 544,
-      "title": "444",
-      "rating": 4,
-      "address": "5ygf gdfgfgdfg "
-    },
-    {
-      "id": 54,
-      "title": "555",
-      "rating": 3.4,
-      "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
-    },
-    {
-      "id": 48,
-      "title": "444",
-      "rating": 4,
-      "address": "5ygf gdfgfgdfg "
-    },
-    {
-      "id": 56,
-      "title": "555",
-      "rating": 3.4,
-      "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
-    },
-    {
-      "id": 40,
-      "title": "444",
-      "rating": 4,
-      "address": "5ygf gdfgfgdfg "
-    },
-    {
-      "id": 53,
-      "title": "555",
-      "rating": 3.4,
-      "address": "5ygfsgdfg gdfg ",
-      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg",
+      "image":
     }
   ],
   "dishes": [
@@ -95,7 +44,8 @@
         "description": "26 куриных крылышек в острой панировке",
         "price": 779,
         "section": "Баскеты",
-        "restaurant_id": 1
+        "restaurant_id": 1,
+        "image": "https://i.imgur.com/VUEGlFp.jpeg"
       },
       {
         "id": 2,
@@ -125,7 +75,8 @@
         "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
         "price": 189,
         "section": "Твистеры",
-        "restaurant_id": 3
+        "restaurant_id": 3,
+        "image": "https://i.imgur.com/Tm0nlyP.jpeg"
       },
       {
         "id": 5,
@@ -135,7 +86,8 @@
         "description": "26 куриных крылышек в острой панировке",
         "price": 779,
         "section": "Баскеты",
-        "restaurant_id": 3
+        "restaurant_id": 3,
+        "image": "https://i.imgur.com/XH93QTm.jpeg"
       },
       {
         "id": 6,
@@ -155,7 +107,8 @@
         "description": "26 куриных крылышек в острой панировке",
         "price": 779,
         "section": "Баскеты",
-        "restaurant_id": 5
+        "restaurant_id": 5,
+        "image": "https://spoonacular.com/recipeImages/716429-312x231.jpg"
       },
       {
         "id": 8,
@@ -165,7 +118,9 @@
         "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
         "price": 189,
         "section": "Твистеры",
-        "restaurant_id": 5
+        "restaurant_id": 5,
+        "image": "https://spoonacular.com/recipeImages/716429-312x231.jpg"
+
       }
   ],
   "empty": []

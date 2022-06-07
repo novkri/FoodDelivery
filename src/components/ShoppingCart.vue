@@ -93,7 +93,7 @@ onMounted(() => {
 });
 
 watch(getRestaurantId, (newId) => {
-  getRestaurantInfo(newId);
+  getRestaurantInfo(newId as string);
 });
 const { data, error } = useFetch(
   "https://api.spoonacular.com/food/menuItems/1"

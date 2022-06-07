@@ -1,7 +1,13 @@
 <template>
   <div class="card">
     <div class="image">
-      <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt="" />
+      <img
+        v-if="item?.image"
+        :src="item.image"
+        class="card__image"
+        alt="image"
+      />
+      <img v-else src="@/assets/empty.jpg" alt="logo" class="card__image" />
     </div>
     <div class="card__overlay">
       <div class="card__header">
@@ -63,16 +69,19 @@ const addToCart = (item: Dish) => {
   box-shadow: 3px 4px 16px 0px rgb(217 217 217 / 72%);
   overflow: hidden;
 
-  //.image {
-  //  background-color: #76acfb;
-  //  height: 164px;
-  //  border-radius: 16px 16px 0 0;
-  //}
+  .image {
+    //  height: 164px;
+    //  border-radius: 16px 16px 0 0;
+    height: 90%;
+  }
 
   &__image {
     width: 100%;
     height: auto;
-    background-color: #76acfb;
+
+    // todo ???
+    height: 100%;
+    object-fit: cover;
   }
 
   &__overlay {

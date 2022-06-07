@@ -54,11 +54,4 @@ const chooseRestaurant = (item: Restaurant) => {
     margin-right: 0;
   }
 }
-
-.list-transition {
-  border: 1px solid red;
-}
-.list-transition-move {
-  transition: all 1s;
-}
 </style>

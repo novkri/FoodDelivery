@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div v-if="isLoading"></div>
+  <div v-else>
     <div v-if="data.length === 0">No data</div>
     <RestaurantList v-else :items="data" />
   </div>
@@ -11,7 +12,7 @@ import { computed, onMounted, Ref, ref } from "vue";
 import { useFetch } from "@/assets/composables/fetch";
 import Restaurant from "@/types/Restaurant";
 
-const { data, error } = useFetch<Restaurant>(
+const { data, error, isLoading } = useFetch<Restaurant>(
   "http://localhost:3000/restaurants"
 );
 </script>

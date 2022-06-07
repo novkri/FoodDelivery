@@ -4,6 +4,7 @@ interface Restaurant {
   rating: number;
   address: string;
   description?: string;
+  image?: string;
 }
 
 export default Restaurant;

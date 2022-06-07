@@ -7,10 +7,10 @@
 
     <div class="card__header">
       <p class="card__title">{{ item.title }}</p>
-
       <p class="card__description">{{ item.description }}</p>
     </div>
     <div class="card__rating">
+      <img src="@/assets/star.svg" alt="star" />
       <span class="rating">{{ item.rating }}</span>
     </div>
   </div>
@@ -48,18 +48,22 @@ const props = defineProps({
   }
 
   //.image {
-  //  background-color: #76acfb;
+
   //  height: 164px;
   //  border-radius: 16px 16px 0 0;
+  //
+  //  height: 70%;
   //}
 
   &__image {
     width: 100%;
-
     height: 164px;
-    background-color: #76acfb;
 
     object-fit: cover;
+
+    // todo ???
+    //height: 100%;
+    //object-fit: cover;
   }
 
   &__header {
@@ -88,10 +92,20 @@ const props = defineProps({
     position: absolute;
     top: 2%;
     right: 2%;
-    border-radius: 30%;
+    border-radius: 8px;
     padding: 10px;
     background-color: #fffaf5;
-    min-width: 20px;
+    min-width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+
+    img {
+      width: 13px;
+      height: 18px;
+      margin-right: 5px;
+    }
   }
 
   &__description {

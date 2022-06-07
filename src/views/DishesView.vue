@@ -4,11 +4,14 @@
       <button class="go-back-link" @click="goBack">&lt; Все рестораны</button>
     </div>
 
-    <h1 class="restaurant-name" v-if="currentRestaurant">
-      {{ currentRestaurant.title }}
-    </h1>
-    <div v-if="data.length === 0">No data</div>
-    <DishList v-else :items="data" />
+    <div v-if="isLoading"></div>
+    <div v-else>
+      <h1 class="restaurant-name" v-if="currentRestaurant">
+        {{ currentRestaurant.title }}
+      </h1>
+      <div v-if="data.length === 0">No data</div>
+      <DishList v-else :items="data" />
+    </div>
   </div>
 
   <ShoppingCart />
@@ -52,7 +55,7 @@ onMounted(() => {
 
 provide("restaurantId", route.params.id);
 
-const { data, error } = useFetch<Dish>(
+const { data, error, isLoading } = useFetch<Dish>(
   `http://localhost:3000/dishes?restaurant_id=${route.params.id}`
 );
 

@@ -7,6 +7,7 @@ interface Dish {
   price: number;
   section: string;
   restaurant_id: number;
+  image?: string;
 }
 
 export default Dish;
