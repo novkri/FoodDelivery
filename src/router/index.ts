@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import RestaurantsView from "../views/RestaurantsView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: RestaurantsView,
   },
   {
     path: "/rest/:id",
-    name: "about",
-    component: () => import("../views/AboutView.vue"),
+    name: "menu",
+    component: () => import("../views/DishesView.vue"),
     props: true,
   },
 ];

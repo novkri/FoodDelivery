@@ -6,13 +6,29 @@
     </div>
 
     <div class="list" v-else>
+      <!--      todo get Name -->
+      <p class="restaurant">Restaurant id: {{ store.getRestaurantId }}</p>
       <div class="list-item" v-for="item in getOrder" :key="item.dish.id">
-        <p>{{ item.dish.title }}</p>
+        <div class="header">
+          <p class="title">{{ item.dish.title }}</p>
+          <p class="price">{{ item.dish.price * item.amount }} Р</p>
+        </div>
 
-        <span>{{ item.amount }}</span>
+        <div class="actions">
+          <CounterButton
+            :counter="item.amount"
+            @increment="incrementAmount(item.dish.id)"
+            @decrement="decrementAmount(item.dish.id)"
+          />
 
-        <button @click="removeFromCart(item)">Delete</button>
+          <button class="delete-btn action-btn" @click="removeFromCart(item)">
+            Delete
+          </button>
+        </div>
       </div>
+
+      <!--       todo get total-->
+      <p class="total">Total: {{ getTotalPrice }}</p>
 
       <!--      <span>{{ item.amount }}</span>-->
     </div>
@@ -20,31 +36,39 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from "vue";
+<script setup lang="ts">
+import { computed, defineProps } from "vue";
 import { useMainStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
 
-export default defineComponent({
-  name: "ShoppingCart",
-  props: {},
-  setup() {
-    const store = useMainStore();
+import CounterButton from "@/components/CounterButton.vue";
 
-    //todo типизация !
-    const { getOrder } = storeToRefs(store);
+// mixin example
+// import useCounter from "@/assets/scripts/MixinExample.vue";
+// const counter1 = useCounter(2)
+// counter1.incrementCounter()
+// const counter2 = useCounter(5)
+// counter2.decrementCounter()
+// console.log(counter1.getCounter(), counter2.getCounter())
 
-    const removeFromCart = (item: DishOrder) => {
-      store.deleteDish(item.dish.id);
-    };
+const props = defineProps({});
+const store = useMainStore();
 
-    return {
-      getOrder,
-      removeFromCart,
-    };
-  },
-});
+//todo типизация !
+const { getOrder, getTotalPrice } = storeToRefs(store);
+
+const removeFromCart = (item: DishOrder) => {
+  store.deleteDish(item.dish.id);
+};
+
+const incrementAmount = (id: number) => {
+  store.incrementDishAmount(id);
+};
+
+const decrementAmount = (id: number) => {
+  store.decrementDishAmount(id);
+};
 </script>
 
 <style scoped lang="scss">
@@ -53,24 +77,69 @@ export default defineComponent({
   width: 344px;
   height: auto;
   right: 0;
-  top: 74px;
+  //top: 74px;
+  top: 0;
   bottom: 0;
   left: auto;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 8%);
   overflow: hidden;
   z-index: 100;
-  //box-sizing: border-box;
 
   &-empty {
-    //display: block;
-    //position: absolute;
-    //top: 40%;
-    //left: 50%;
-    //margin-right: -50%;
-    ////transform: translate(-50%, -40%);
-    //padding: 0 60px;
-    //text-align: center;
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+  }
+
+  .restaurant {
+    padding: 15px;
+  }
+
+  .list {
+    height: 100%;
+
+    .list-item {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #eee;
+      padding: 15px;
+
+      // todo not workibg
+      //&:last-child {
+      //  border-bottom: 1px solid #eee;
+      //}
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .delete-btn {
+        background-color: #c4c5c4;
+        padding: 10px 15px;
+
+        &:hover {
+          background-color: rgb(158, 159, 159);
+        }
+      }
+    }
+  }
+
+  .total {
+    position: fixed;
+    bottom: 0;
+    padding: 15px;
+    width: calc(344px - 15px - 15px);
+    border-top: 1px solid #eee;
   }
 }
 </style>

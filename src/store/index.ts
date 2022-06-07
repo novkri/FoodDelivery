@@ -17,10 +17,22 @@ export const useMainStore = defineStore({
     } as RootState),
   getters: {
     getOrder: (state) => state.cart.order,
+    getOrderLength: (state) => state.cart.order.length,
+    getRestaurantId: (state) => state.cart.restaurant_id,
+    getTotalPrice: (state) =>
+      state.cart.order.reduce((acc, item) => {
+        const totalItemPrice = item.dish.price * item.amount;
+        acc += totalItemPrice;
+        return acc;
+      }, 0),
     // getClass: (state) => state.character.class,
   },
 
   actions: {
+    clear() {
+      this.cart.order = [];
+    },
+
     setRestaurant(id: number) {
       this.cart.restaurant_id = id;
     },

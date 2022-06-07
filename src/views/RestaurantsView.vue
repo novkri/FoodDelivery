@@ -4,16 +4,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import RestaurantList from "@/components/Restaurant/RestaurantList.vue";
-
-export default defineComponent({
-  name: "HomeView",
-  components: {
-    RestaurantList,
-  },
-});
 </script>
 <style scoped lang="scss">
 .home {

@@ -17,36 +17,38 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab delectus
         dolorem, quam qui quisquam voluptatum.
       </p>
-      <button class="add-button" @click="addToCart(item)">В корзину</button>
+      <button class="add-button action-btn" @click="addToCart(item)">
+        В корзину
+      </button>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
-
+<script setup lang="ts">
+import { defineComponent, defineProps, inject, PropType, ref } from "vue";
 import Dish from "@/types/Dish";
 import { useMainStore } from "@/store";
 
-export default defineComponent({
-  name: "DishCard",
-  props: {
-    item: {
-      required: true,
-      type: Object as PropType<Dish>,
-    },
-  },
-  setup() {
-    const store = useMainStore();
-
-    const addToCart = (item: Dish) => {
-      store.addDish(item);
-    };
-    return {
-      addToCart,
-    };
+const props = defineProps({
+  item: {
+    required: true,
+    type: Object as PropType<Dish>,
   },
 });
+
+const store = useMainStore();
+
+const restaurantRouteId = inject<number>("restaurantId");
+
+const addToCart = (item: Dish) => {
+  if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
+    //   todo add modal about reseting the cart
+    store.clear();
+  }
+
+  store.setRestaurant(restaurantRouteId as number);
+  store.addDish(item);
+};
 </script>
 
 <style scoped lang="scss">
@@ -128,14 +130,10 @@ export default defineComponent({
   }
 
   .add-button {
-    padding: 15px;
     background-color: #66cb9f;
-    color: white;
     margin-bottom: 10px;
-    font-weight: 500;
 
     &:hover {
-      cursor: pointer;
       background-color: rgb(56, 211, 144);
     }
   }

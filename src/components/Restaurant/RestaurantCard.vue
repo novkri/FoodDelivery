@@ -15,17 +15,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { defineComponent, defineProps, PropType } from "vue";
 import Restaurant from "@/types/Restaurant";
 
-export default defineComponent({
-  name: "RestaurantCard",
-  props: {
-    item: {
-      required: true,
-      type: Object as PropType<Restaurant>,
-    },
+const props = defineProps({
+  item: {
+    required: true,
+    type: Object as PropType<Restaurant>,
   },
 });
 </script>
