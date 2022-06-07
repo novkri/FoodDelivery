@@ -2,7 +2,9 @@
   <div class="home">
     <button class="go-back-link" @click="goBack">&lt; Все рестораны</button>
     <div>id: {{ $route.params.id }}</div>
-    <DishList />
+
+    <div v-if="data.length === 0">No data</div>
+    <DishList v-else :items="data" />
   </div>
 
   <ShoppingCart />
@@ -13,6 +15,8 @@ import { defineComponent, defineProps, onMounted, provide } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ShoppingCart from "@/components/ShoppingCart.vue";
 import DishList from "@/components/Dish/DishList.vue";
+import { useFetch } from "@/assets/composables/fetch";
+import Dish from "@/types/Dish";
 
 const props = defineProps({
   // id: {
@@ -28,6 +32,10 @@ onMounted(() => {
 });
 
 provide("restaurantId", route.params.id);
+
+const { data, error } = useFetch<Dish>(
+  `http://localhost:3000/dishes?restaurant_id=${route.params.id}`
+);
 
 const goBack = () => {
   router.go(-1);

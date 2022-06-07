@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
-import useCounter from "@/assets/scripts/MixinExample.vue";
+import useCounter from "@/assets/composables/MixinExample.vue";
 
 const props = defineProps({
   counter: {

@@ -1,8 +1,9 @@
 <template>
   <div class="dishes-list">
+    <!--    todo if no dishes -->
     <transition-group name="list-transition">
       <DishCard
-        v-for="item in dishes"
+        v-for="item in items"
         :key="item.id"
         :item="item"
         class="list-item"
@@ -12,35 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineProps, ref } from "vue";
+import { defineComponent, defineProps, PropType, ref } from "vue";
 import DishCard from "@/components/Dish/DishCard.vue";
 import Dish from "@/types/Dish";
 
-const props = defineProps({});
-
-const dishes = ref<Dish[]>([
-  {
-    id: 1,
-    title: "Баскет L 26 крыльев",
-    weight: 700,
-    calories: 304,
-    description: "26 куриных крылышек в острой панировке",
-    price: 779,
-    section: "Баскеты",
-    restaurant_id: 1,
+const props = defineProps({
+  items: {
+    required: true,
+    type: Array as PropType<Dish[]>,
   },
-  {
-    id: 2,
-    title: "Твистер острый",
-    weight: 178,
-    calories: 250,
-    description:
-      "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
-    price: 189,
-    section: "Твистеры",
-    restaurant_id: 1,
-  },
-]);
+});
 </script>
 
 <style scoped lang="scss">

@@ -1,15 +1,172 @@
 {
   "restaurants": [
-    { "id": 1, "title": "Rest 1" },
-    { "id": 2, "title": "Rest 2" },
-    { "id": 3, "title": "Rest 3" }
+    {
+      "id": 1,
+      "title": "111",
+      "rating": 4.5,
+      "address": "gdfgdf",
+      "description": "dfgdfg"
+    },
+    {
+      "id": 2,
+      "title": "222",
+      "rating": 4.8,
+      "address": "dsf dfgdf "
+    },
+    {
+      "id": 3,
+      "title": "333",
+      "rating": 4.4,
+      "address": "5ygf gdfg ",
+      "description": "dffghgfh dfs sdddddddddddddd sfl gdfg"
+    },
+    {
+      "id": 4,
+      "title": "444",
+      "rating": 4,
+      "address": "5ygf gdfgfgdfg "
+    },
+    {
+      "id": 5,
+      "title": "555",
+      "rating": 3.4,
+      "address": "5ygfsgdfg gdfg ",
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+    },
+    {
+      "id": 34,
+      "title": "444",
+      "rating": 4,
+      "address": "5ygf gdfgfgdfg "
+    },
+    {
+      "id": 53,
+      "title": "555",
+      "rating": 3.4,
+      "address": "5ygfsgdfg gdfg ",
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+    },
+    {
+      "id": 544,
+      "title": "444",
+      "rating": 4,
+      "address": "5ygf gdfgfgdfg "
+    },
+    {
+      "id": 54,
+      "title": "555",
+      "rating": 3.4,
+      "address": "5ygfsgdfg gdfg ",
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+    },
+    {
+      "id": 48,
+      "title": "444",
+      "rating": 4,
+      "address": "5ygf gdfgfgdfg "
+    },
+    {
+      "id": 56,
+      "title": "555",
+      "rating": 3.4,
+      "address": "5ygfsgdfg gdfg ",
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+    },
+    {
+      "id": 40,
+      "title": "444",
+      "rating": 4,
+      "address": "5ygf gdfgfgdfg "
+    },
+    {
+      "id": 53,
+      "title": "555",
+      "rating": 3.4,
+      "address": "5ygfsgdfg gdfg ",
+      "description": "afgdffghgfh dfs sdddddddddddddd sfl gdfg"
+    }
   ],
   "dishes": [
-    { "id": 1, "body": "some dish 1", "postId": 1 },
-    { "id": 2, "body": "some dish 2", "postId": 2 },
-    { "id": 3, "body": "some dish 3", "postId": 2 },
-    { "id": 4, "body": "some dish 4", "postId": 3 },
-    { "id": 5, "body": "some dish 5", "postId": 1 }
+      {
+        "id": 1,
+        "title": "Баскет L 26 крыльев",
+        "weight": 700,
+        "calories": 304,
+        "description": "26 куриных крылышек в острой панировке",
+        "price": 779,
+        "section": "Баскеты",
+        "restaurant_id": 1
+      },
+      {
+        "id": 2,
+        "title": "Твистер острый",
+        "weight": 178,
+        "calories": 250,
+        "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
+        "price": 189,
+        "section": "Твистеры",
+        "restaurant_id": 1
+      },
+      {
+        "id": 3,
+        "title": "Баскет L 26 крыльев",
+        "weight": 700,
+        "calories": 304,
+        "description": "26 куриных крылышек в острой панировке",
+        "price": 779,
+        "section": "Баскеты",
+        "restaurant_id": 2
+      },
+      {
+        "id": 4,
+        "title": "Твистер острый",
+        "weight": 178,
+        "calories": 250,
+        "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
+        "price": 189,
+        "section": "Твистеры",
+        "restaurant_id": 3
+      },
+      {
+        "id": 5,
+        "title": "Баскет L 26 крыльев",
+        "weight": 700,
+        "calories": 304,
+        "description": "26 куриных крылышек в острой панировке",
+        "price": 779,
+        "section": "Баскеты",
+        "restaurant_id": 3
+      },
+      {
+        "id": 6,
+        "title": "Твистер не острый",
+        "weight": 170,
+        "calories": 150,
+        "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
+        "price": 109,
+        "section": "Твистеры",
+        "restaurant_id": 3
+      },
+      {
+        "id": 7,
+        "title": "Баскет L 26 крыльев",
+        "weight": 700,
+        "calories": 304,
+        "description": "26 куриных крылышек в острой панировке",
+        "price": 779,
+        "section": "Баскеты",
+        "restaurant_id": 5
+      },
+      {
+        "id": 8,
+        "title": "Твистер острый",
+        "weight": 178,
+        "calories": 250,
+        "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
+        "price": 189,
+        "section": "Твистеры",
+        "restaurant_id": 5
+      }
   ],
-  "profile": { "name": "typicode" }
+  "empty": []
 }

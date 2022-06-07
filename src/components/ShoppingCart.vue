@@ -45,7 +45,7 @@ import { DishOrder } from "@/types/Cart";
 import CounterButton from "@/components/CounterButton.vue";
 
 // mixin example
-// import useCounter from "@/assets/scripts/MixinExample.vue";
+// import useCounter from "@/assets/composables/MixinExample.vue";
 // const counter1 = useCounter(2)
 // counter1.incrementCounter()
 // const counter2 = useCounter(5)

@@ -1,4 +1,5 @@
 <template>
+  <!--  todo check sizes in description is too long (if it will be there) -->
   <div class="card">
     <div class="image">
       <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt="" />
@@ -80,6 +81,7 @@ const props = defineProps({
     font-size: 1em;
     color: #6a515e;
     max-width: 120px;
+    margin-top: 8px;
   }
 
   &__rating {
@@ -90,21 +92,14 @@ const props = defineProps({
     padding: 10px;
     background-color: #fffaf5;
     min-width: 20px;
-    //margin-top: 10px;
   }
 
   &__description {
-    margin-top: 15px;
     text-align: left;
-
-    padding: 0 2em 2em;
+    padding: 0 25px 25px;
     margin: 0;
     color: #d7bdca;
-
-    //display: -webkit-box;
-    //-webkit-box-orient: vertical;
-    //-webkit-line-clamp: 3;
-    //overflow: hidden;
+    overflow: hidden;
   }
 }
 </style>
