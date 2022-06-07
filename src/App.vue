@@ -10,6 +10,11 @@ import { useRoute } from "vue-router";
 import defaultLayout from "@/layouts/DefaultLayout.vue";
 
 const route = useRoute();
+
+// const double = computed<number>(() => {
+//   // type error if this doesn't return a number
+// })
+
 const layout = computed(() => {
   return route.meta.layout || defaultLayout;
 });

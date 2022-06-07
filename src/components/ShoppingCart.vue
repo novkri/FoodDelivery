@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, onMounted, ref, watch } from "vue";
+import { defineProps, onMounted, ref, watch } from "vue";
 import { useMainStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
