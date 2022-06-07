@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { Cart, DishOrder } from "@/types/Cart";
 import Dish from "@/types/Dish";
+import Restaurant from "@/types/Restaurant";
 
 export type RootState = {
   cart: Cart;
@@ -35,6 +36,21 @@ export const useMainStore = defineStore({
 
     setRestaurant(id: number) {
       this.cart.restaurant_id = id;
+    },
+
+    //todo here? async ?
+    getRestaurantInfo(id: string | number) {
+      return new Promise<Restaurant | Error>((resolve, reject) => {
+        fetch(`http://localhost:3000/restaurants/${id}`)
+          .then((res) => res.json())
+          .then((json) => {
+            resolve(json as Restaurant);
+          })
+          .catch((error) => {
+            console.log(error);
+            reject(error as Error);
+          });
+      });
     },
 
     addDish(item: Dish) {

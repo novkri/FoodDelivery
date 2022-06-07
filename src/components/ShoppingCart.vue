@@ -6,8 +6,9 @@
     </div>
 
     <div class="list" v-else>
-      <!--      todo get Name -->
-      <p class="restaurant">Restaurant id: {{ store.getRestaurantId }}</p>
+      <p class="restaurant" v-if="currentRestaurant">
+        Order from {{ currentRestaurant.title }} restaurant
+      </p>
       <div class="list-item" v-for="item in getOrder" :key="item.dish.id">
         <div class="header">
           <p class="title">{{ item.dish.title }}</p>
@@ -37,12 +38,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed, defineProps, onMounted, ref, watch } from "vue";
 import { useMainStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
 
 import CounterButton from "@/components/CounterButton.vue";
+import { useFetch } from "@/assets/composables/fetch";
+import Restaurant from "@/types/Restaurant";
 
 // mixin example
 // import useCounter from "@/assets/composables/MixinExample.vue";
@@ -56,7 +59,7 @@ const props = defineProps({});
 const store = useMainStore();
 
 //todo типизация !
-const { getOrder, getTotalPrice } = storeToRefs(store);
+const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
 
 const removeFromCart = (item: DishOrder) => {
   store.deleteDish(item.dish.id);
@@ -69,6 +72,32 @@ const incrementAmount = (id: number) => {
 const decrementAmount = (id: number) => {
   store.decrementDishAmount(id);
 };
+
+const currentRestaurant = ref<Restaurant | null>(null);
+
+const getRestaurantInfo = (id: string | number) => {
+  if (id) {
+    store
+      .getRestaurantInfo(id)
+      .then((value) => {
+        currentRestaurant.value = value as Restaurant;
+      })
+      .catch((err) => {
+        currentRestaurant.value = null;
+        throw new Error(err);
+      });
+  }
+};
+onMounted(() => {
+  getRestaurantInfo(getRestaurantId.value as number);
+});
+
+watch(getRestaurantId, (newId) => {
+  getRestaurantInfo(newId);
+});
+const { data, error } = useFetch(
+  "https://api.spoonacular.com/food/menuItems/1"
+);
 </script>
 
 <style scoped lang="scss">
