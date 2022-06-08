@@ -27,7 +27,6 @@ const props = defineProps({
 });
 
 const router = useRouter();
-const memes = ref<any[]>();
 
 const chooseRestaurant = (item: Restaurant) => {
   router.push({
@@ -41,12 +40,6 @@ const chooseRestaurant = (item: Restaurant) => {
 const { data, error, isLoading } = useFetch<Restaurant>(
   "http://localhost:3000/restaurants"
 );
-
-await fetch("https://api.imgflip.com/get_memes")
-  .then((res) => res.json())
-  .then(async (data) => {
-    // console.log(data.data);
-  });
 </script>
 
 <style scoped lang="scss">
