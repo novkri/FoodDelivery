@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { defineProps, onMounted, ref, watch } from "vue";
-import { useMainStore } from "@/store";
+import { useCartStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
 import CounterButton from "@/components/CounterButton.vue";
@@ -48,9 +48,8 @@ import Restaurant from "@/types/Restaurant";
 // console.log(counter1.getCounter(), counter2.getCounter())
 
 const props = defineProps({});
-const store = useMainStore();
+const store = useCartStore();
 
-//todo типизация !
 const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
 
 const removeFromCart = (item: DishOrder) => {

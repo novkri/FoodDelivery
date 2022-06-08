@@ -24,7 +24,7 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
 import DishList from "@/components/Dish/DishList.vue";
 import { useFetch } from "@/assets/composables/fetch";
 import Dish from "@/types/Dish";
-import { useMainStore } from "@/store";
+import { useCartStore } from "@/store";
 import Restaurant from "@/types/Restaurant";
 
 const props = defineProps({
@@ -35,9 +35,8 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
-const store = useMainStore();
+const store = useCartStore();
 
-//todo вынести отсбюда и из ShoppingCart
 const currentRestaurant = ref<Restaurant>();
 
 // get current restaurant name
@@ -66,11 +65,6 @@ const goBack = () => {
 };
 </script>
 <style scoped lang="scss">
-.home {
-  // todo вынести в layout
-  //min-height: calc(100vh - 74px);
-}
-
 .link-wrapper {
   margin-bottom: 15px;
   width: 100%;

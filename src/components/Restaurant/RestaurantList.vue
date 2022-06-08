@@ -27,6 +27,7 @@ const props = defineProps({
 });
 
 const router = useRouter();
+const memes = ref<any[]>();
 
 const chooseRestaurant = (item: Restaurant) => {
   router.push({
@@ -41,36 +42,11 @@ const { data, error, isLoading } = useFetch<Restaurant>(
   "http://localhost:3000/restaurants"
 );
 
-//  todo Q async component (+)
-// const data = await fetch("http://localhost:3000/restaurants").then((res) =>
-//   res.json()
-// );
-
-// const data = ref<Restaurant[]>();
-// const error = ref<ErrorEvent>();
-// const isLoading = ref(true);
-//
-// todo Q async component
-// const fetchDataAsync = async () => {
-//   await fetch("http://localhost:3000/restaurants")
-//     .then((res) => res.json())
-//     .then((json) => {
-//       data.value = json;
-//     })
-//     .catch((err) => {
-//       error.value = err;
-//     })
-//     .finally(() => {
-//       isLoading.value = false;
-//     });
-//   // }, 10000);
-// };
-//
-// onMounted(() => {
-//   setTimeout(() => {
-//     fetchDataAsync();
-//   }, 5000);
-// });
+await fetch("https://api.imgflip.com/get_memes")
+  .then((res) => res.json())
+  .then(async (data) => {
+    console.log(data.data);
+  });
 </script>
 
 <style scoped lang="scss">

@@ -7,7 +7,7 @@ export type RootState = {
   cart: Cart;
 };
 
-export const useMainStore = defineStore({
+export const useCartStore = defineStore({
   id: "cartStore",
   state: () =>
     ({
@@ -38,7 +38,6 @@ export const useMainStore = defineStore({
       this.cart.restaurant_id = id;
     },
 
-    // todo Q?
     getRestaurantInfo(id: string | number) {
       return new Promise<Restaurant | Error>((resolve, reject) => {
         fetch(`http://localhost:3000/restaurants/${id}`)

@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { defineComponent, defineProps, inject, PropType, ref } from "vue";
 import Dish from "@/types/Dish";
-import { useMainStore } from "@/store";
+import { useCartStore } from "@/store";
 
 const props = defineProps({
   item: {
@@ -41,13 +41,12 @@ const props = defineProps({
   },
 });
 
-const store = useMainStore();
+const store = useCartStore();
 
 const restaurantRouteId = inject<number>("restaurantId");
 
 const addToCart = (item: Dish) => {
   if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
-    //   todo add modal about reseting the cart
     store.clear();
   }
 
