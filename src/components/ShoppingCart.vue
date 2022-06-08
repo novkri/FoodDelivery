@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, ref, watch, watchEffect } from "vue";
+import { defineProps, onMounted, ref, unref, watch, watchEffect } from "vue";
 import { useCartStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
@@ -80,7 +80,7 @@ const getRestaurantInfo = (id: string | number) => {
   }
 };
 onMounted(() => {
-  getRestaurantInfo(getRestaurantId.value as number);
+  getRestaurantInfo(unref(getRestaurantId) as number);
 });
 
 watch(getRestaurantId, (newId) => {
