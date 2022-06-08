@@ -16,7 +16,7 @@
 
         <div class="actions">
           <CounterButton
-            :counter="item.amount"
+            :count="item.amount"
             @increment="incrementAmount(item.dish.id)"
             @decrement="decrementAmount(item.dish.id)"
           />

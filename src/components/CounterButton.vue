@@ -4,7 +4,7 @@
       <img src="@/assets/img/minus.svg" alt="-" />
     </button>
 
-    <span class="counter__number">{{ counter }}</span>
+    <span class="counter__number">{{ count }}</span>
     <button class="counter__button" @click="increment">
       <img src="@/assets/img/plus.svg" alt="+" />
     </button>
@@ -13,10 +13,9 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
-import useCounter from "@/assets/composables/MixinExample.vue";
 
 const props = defineProps({
-  counter: {
+  count: {
     required: true,
     type: Number,
   },
@@ -26,7 +25,12 @@ const emit = defineEmits<{
   (e: "increment"): void;
   (e: "decrement"): void;
   // example :
-  (e: "change", id: number): void;
+  (
+    e: "change",
+    test: {
+      id: number;
+    }
+  ): void;
 }>();
 
 const decrement = () => {
