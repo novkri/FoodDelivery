@@ -1,4 +1,4 @@
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import Restaurant from "@/types/Restaurant";
 import { useCartStore } from "@/store";
 
