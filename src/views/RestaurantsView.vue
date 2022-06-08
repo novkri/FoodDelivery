@@ -13,7 +13,8 @@
       Teleport is {{ teleportOpen ? "open" : "closed" }}
     </button>
   </div>
-  <Teleport to="#app"><ShoppingCart v-if="teleportOpen" /></Teleport>
+  <!--  The target element cannot be a part of the same component... It needs to be outside of <div id="app">. -->
+  <Teleport to="body"><ShoppingCart v-if="teleportOpen" /></Teleport>
 </template>
 
 <script setup lang="ts">
