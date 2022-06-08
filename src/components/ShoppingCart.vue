@@ -21,7 +21,7 @@
             @decrement="decrementAmount(item.dish.id)"
           />
 
-          <button class="delete-btn action-btn" @click="removeFromCart(item)">
+          <button class="delete-btn" @click="removeFromCart(item)">
             Delete
           </button>
         </div>
@@ -94,6 +94,8 @@ watch(getRestaurantId, (newId) => {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/styles/mixins.scss";
+
 .basket {
   position: fixed;
   width: 344px;
@@ -145,12 +147,9 @@ watch(getRestaurantId, (newId) => {
       }
 
       .delete-btn {
+        @include button($background: #c4c5c4);
         background-color: #c4c5c4;
         padding: 10px 15px;
-
-        &:hover {
-          background-color: rgb(158, 159, 159);
-        }
       }
     }
   }

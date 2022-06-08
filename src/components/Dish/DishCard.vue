@@ -22,17 +22,28 @@
       <p v-if="item.description" class="card__description">
         {{ item.description }}
       </p>
-      <button class="add-button action-btn" @click="addToCart(item)">
-        В корзину
-      </button>
+      <button class="add-button" @click="addToCart">В корзину</button>
     </div>
+
+    <Teleport to="body"
+      ><PopupWindow
+        v-if="isModalOpen"
+        @close="isModalOpen = false"
+        @confirm="createNewCart"
+        @decline="declineChanges"
+      >
+        <template #body>Your Shopping Cart will be emptied</template>
+      </PopupWindow>
+    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineProps, inject, PropType, ref } from "vue";
+import { defineProps, inject, PropType, ref } from "vue";
 import Dish from "@/types/Dish";
 import { useCartStore } from "@/store";
+
+import PopupWindow from "@/components/PopupWindow.vue";
 
 const props = defineProps({
   item: {
@@ -42,23 +53,36 @@ const props = defineProps({
 });
 
 const store = useCartStore();
-
 const restaurantRouteId = inject<number>("restaurantId");
+const isModalOpen = ref(false);
 
-const addToCart = (item: Dish) => {
+const addToCart = () => {
   if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
-    store.clear();
+    isModalOpen.value = true;
+    return;
   }
 
   store.setRestaurant(restaurantRouteId as number);
-  store.addDish(item);
+  store.addDish(props.item);
 };
 
+const createNewCart = () => {
+  store.clear();
+  store.setRestaurant(restaurantRouteId as number);
+  store.addDish(props.item);
+  isModalOpen.value = false;
+};
+const declineChanges = () => {
+  isModalOpen.value = false;
+};
+
+// is used in css
 const textColor = props.item?.description ? "#6a515e" : "grey";
 </script>
 
 <style scoped lang="scss">
 @import "@/assets/styles/card.scss";
+@import "@/assets/styles/mixins.scss";
 
 .card {
   &:hover {
@@ -123,12 +147,9 @@ const textColor = props.item?.description ? "#6a515e" : "grey";
   }
 
   .add-button {
+    @include button($background: #66cb9f);
     background-color: #66cb9f;
     margin-bottom: 10px;
-
-    &:hover {
-      background-color: rgb(56, 211, 144);
-    }
   }
 }
 </style>

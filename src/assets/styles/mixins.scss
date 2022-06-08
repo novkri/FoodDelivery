@@ -1,0 +1,11 @@
+
+@mixin button($background: #eee) {
+  padding: 15px;
+  color: white;
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken($background, 5%);
+  }
+}
