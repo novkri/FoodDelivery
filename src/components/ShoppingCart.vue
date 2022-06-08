@@ -86,6 +86,11 @@ onMounted(() => {
 watch(getRestaurantId, (newId) => {
   getRestaurantInfo(newId as number);
 });
+
+// watchEffect - when I want to watch multiple reactive properties and I don't care about old values
+// watchEffect(() => {
+//   getRestaurantInfo(unref(getRestaurantId) as number);
+// });
 </script>
 
 <style scoped lang="scss">
