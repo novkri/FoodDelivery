@@ -37,60 +37,29 @@ import { useCartStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { DishOrder } from "@/types/Cart";
 import CounterButton from "@/components/CounterButton.vue";
-import Restaurant from "@/types/Restaurant";
-
-// mixin example
-// import useCounter from "@/assets/composables/MixinExample.vue";
-// const counter1 = useCounter(2)
-// counter1.incrementCounter()
-// const counter2 = useCounter(5)
-// counter2.decrementCounter()
-// console.log(counter1.getCounter(), counter2.getCounter())
+import { useCurrentRestaurant } from "@/assets/composables/CurrentRestaurant";
+import { useCounter } from "@/assets/composables/Counter";
+import { useCart } from "@/assets/composables/Cart";
 
 const props = defineProps({});
 const store = useCartStore();
 
 const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
-
+// const { removeFromCart } = useCart()
 const removeFromCart = (item: DishOrder) => {
   store.deleteDish(item.dish.id);
 };
 
-const incrementAmount = (id: number) => {
-  store.incrementDishAmount(id);
-};
+//todo Q
+const { incrementAmount, decrementAmount } = useCounter();
 
-const decrementAmount = (id: number) => {
-  store.decrementDishAmount(id);
-};
-
-const currentRestaurant = ref<Restaurant>();
-
-const getRestaurantInfo = (id: string | number) => {
-  if (id) {
-    store
-      .getRestaurantInfo(id)
-      .then((value) => {
-        currentRestaurant.value = value as Restaurant;
-      })
-      .catch((err) => {
-        currentRestaurant.value = undefined;
-        throw new Error(err);
-      });
-  }
-};
-onMounted(() => {
-  getRestaurantInfo(unref(getRestaurantId) as number);
-});
+const { currentRestaurant, getRestaurantInfo } = useCurrentRestaurant(
+  unref(getRestaurantId) as number
+);
 
 watch(getRestaurantId, (newId) => {
   getRestaurantInfo(newId as number);
 });
-
-// watchEffect - when I want to watch multiple reactive properties and I don't care about old values
-// watchEffect(() => {
-//   getRestaurantInfo(unref(getRestaurantId) as number);
-// });
 </script>
 
 <style scoped lang="scss">

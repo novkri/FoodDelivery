@@ -35,7 +35,7 @@
         v-if="isModalOpen"
         @close="isModalOpen = false"
         @confirm="createNewCart"
-        @decline="declineChanges"
+        @decline="closeModal"
       >
         <template #body>Your Shopping Cart will be emptied</template>
       </PopupWindow>
@@ -46,9 +46,10 @@
 <script setup lang="ts">
 import { defineProps, inject, PropType, ref } from "vue";
 import Dish from "@/types/Dish";
-import { useCartStore } from "@/store";
 
 import PopupWindow from "@/components/PopupWindow.vue";
+
+import { useCart } from "@/assets/composables/Cart";
 
 const props = defineProps({
   item: {
@@ -57,29 +58,9 @@ const props = defineProps({
   },
 });
 
-const store = useCartStore();
-const restaurantRouteId = inject<number>("restaurantId");
-const isModalOpen = ref(false);
-
-const addToCart = () => {
-  if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
-    isModalOpen.value = true;
-    return;
-  }
-
-  store.setRestaurant(restaurantRouteId as number);
-  store.addDish(props.item);
-};
-
-const createNewCart = () => {
-  store.clear();
-  store.setRestaurant(restaurantRouteId as number);
-  store.addDish(props.item);
-  isModalOpen.value = false;
-};
-const declineChanges = () => {
-  isModalOpen.value = false;
-};
+//todo Q
+const { addToCart, createNewCart, isModalOpen, closeModal, openModal } =
+  useCart(props.item);
 
 // is used in css
 const textColor = props.item?.description ? "#6a515e" : "grey";
