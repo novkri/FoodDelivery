@@ -45,7 +45,7 @@
         "price": 779,
         "section": "Баскеты",
         "restaurant_id": 1,
-        "image": "https://i.imgur.com/VUEGlFp.jpeg"
+        "image": "https://img.freepik.com/free-vector/watercolor-hot-pot-illustration_23-2148790828.jpg?t=st=1654677899~exp=1654678499~hmac=0573254bd6b48fe9020da6e75c7cfbd5aa3e9cd14cafd9794bab60d59826d286&w=826"
       },
       {
         "id": 2,
@@ -76,7 +76,7 @@
         "price": 189,
         "section": "Твистеры",
         "restaurant_id": 1,
-        "image": "https://i.imgur.com/Tm0nlyP.jpeg"
+        "image": "https://img.freepik.com/free-vector/ramen-japanese-food-flat-design-style_180868-655.jpg?w=826"
       },
       {
         "id": 5,
@@ -87,17 +87,18 @@
         "price": 779,
         "section": "Баскеты",
         "restaurant_id": 1,
-        "image": "https://i.imgur.com/XH93QTm.jpeg"
+        "image": "https://img.freepik.com/free-vector/detailed-realistic-nasi-lemak-dish_52683-62082.jpg?w=826&t=st=1654678019~exp=1654678619~hmac=4adfaacd5a0a4f71e297581ccd711a8add318d6e51899a2e9c09c58421cbaf58"
       },
       {
         "id": 6,
         "title": "Твистер не острый",
         "weight": 170,
         "calories": 150,
-        "description": "Закручен со вкусом! Кусочки нежнейшего куриного филе в хрустящей острой пан с сочными листьями салата, кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
+        "description": "кусочками помидора и нежным соусом мы завернули в пшеничную лепешку и поджарили в тостере. Тут все и закрутилось!",
         "price": 109,
         "section": "Твистеры",
-        "restaurant_id": 3
+        "restaurant_id": 3,
+        "image": "https://img.freepik.com/free-vector/pancake-honey-sweet-food-dessert-breakfast-hand-drawn-cartoon-art-illustration_56104-910.jpg?t=st=1654678058~exp=1654678658~hmac=8ca84300d8c1955b31918f9370901e45025d1dc42f5e7598d68f625b52013d25&w=996"
       },
       {
         "id": 7,

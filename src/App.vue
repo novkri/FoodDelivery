@@ -2,6 +2,8 @@
   <component :is="layout">
     <router-view />
   </component>
+
+  <div id="modal-target"></div>
 </template>
 
 <script setup lang="ts">

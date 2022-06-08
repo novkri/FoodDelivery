@@ -7,7 +7,12 @@
         class="card__image"
         alt="image"
       />
-      <img v-else src="@/assets/img/empty.jpg" alt="logo" class="card__image" />
+      <img
+        v-else
+        src="@/assets/img/placeholder-850x1100h.png"
+        alt="logo"
+        class="card__image"
+      />
     </div>
     <div class="card__overlay">
       <div class="card__header">
@@ -25,7 +30,7 @@
       <button class="add-button" @click="addToCart">В корзину</button>
     </div>
 
-    <Teleport to="body"
+    <Teleport to="#modal-target"
       ><PopupWindow
         v-if="isModalOpen"
         @close="isModalOpen = false"
