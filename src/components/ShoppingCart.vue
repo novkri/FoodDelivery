@@ -50,7 +50,6 @@ import Restaurant from "@/types/Restaurant";
 const props = defineProps({});
 const store = useMainStore();
 
-//todo типизация !
 const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
 
 const removeFromCart = (item: DishOrder) => {

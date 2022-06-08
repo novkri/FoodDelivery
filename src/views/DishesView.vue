@@ -37,7 +37,6 @@ const route = useRoute();
 const router = useRouter();
 const store = useMainStore();
 
-//todo вынести отсбюда и из ShoppingCart
 const currentRestaurant = ref<Restaurant>();
 
 // get current restaurant name
@@ -66,11 +65,6 @@ const goBack = () => {
 };
 </script>
 <style scoped lang="scss">
-.home {
-  // todo вынести в layout
-  //min-height: calc(100vh - 74px);
-}
-
 .link-wrapper {
   margin-bottom: 15px;
   width: 100%;

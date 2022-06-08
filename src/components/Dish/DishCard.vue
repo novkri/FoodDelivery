@@ -47,7 +47,6 @@ const restaurantRouteId = inject<number>("restaurantId");
 
 const addToCart = (item: Dish) => {
   if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
-    //   todo add modal about reseting the cart
     store.clear();
   }
 

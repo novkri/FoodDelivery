@@ -38,7 +38,6 @@ export const useMainStore = defineStore({
       this.cart.restaurant_id = id;
     },
 
-    // todo Q?
     getRestaurantInfo(id: string | number) {
       return new Promise<Restaurant | Error>((resolve, reject) => {
         fetch(`http://localhost:3000/restaurants/${id}`)
