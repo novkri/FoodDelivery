@@ -1,9 +1,13 @@
-import { ref } from "vue";
+import { ref, unref } from "vue";
 
 export function useFetch<T>(url: string) {
   const data = ref<T[]>();
   const error = ref<ErrorEvent>();
   const isLoading = ref(true);
+
+  // isLoading = RefImpl{...}
+  // unref(isLoading) = true
+  // console.log(isLoading, unref(isLoading));
 
   fetch(url)
     .then((res) => res.json())

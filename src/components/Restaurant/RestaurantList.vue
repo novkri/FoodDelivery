@@ -45,7 +45,7 @@ const { data, error, isLoading } = useFetch<Restaurant>(
 await fetch("https://api.imgflip.com/get_memes")
   .then((res) => res.json())
   .then(async (data) => {
-    console.log(data.data);
+    // console.log(data.data);
   });
 </script>
 
