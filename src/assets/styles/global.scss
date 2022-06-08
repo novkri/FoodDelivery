@@ -27,7 +27,8 @@ time, mark, audio, video {
   vertical-align: baseline;
   font-feature-settings: 'pnum' on, 'lnum' on;
   font-variant: no-common-ligatures;
-  //letter-spacing: 0.6px  font-family: $roboto;
+  //letter-spacing: 0.6px
+  font-family: $roboto;
 }
 
 input[type="search"]::-webkit-search-decoration,

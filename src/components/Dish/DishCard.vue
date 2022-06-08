@@ -53,6 +53,8 @@ const addToCart = (item: Dish) => {
   store.setRestaurant(restaurantRouteId as number);
   store.addDish(item);
 };
+
+const textColor = props.item?.description ? "#6a515e" : "grey";
 </script>
 
 <style scoped lang="scss">
@@ -104,7 +106,8 @@ const addToCart = (item: Dish) => {
 
   &__title {
     font-size: 1em;
-    color: #6a515e;
+    //color: #6a515e;
+    color: v-bind(textColor);
     max-width: 120px;
   }
 
