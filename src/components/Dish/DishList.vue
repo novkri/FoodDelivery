@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineProps, PropType, ref } from "vue";
+import { defineProps, PropType } from "vue";
 import DishCard from "@/components/Dish/DishCard.vue";
 import Dish from "@/types/Dish";
 

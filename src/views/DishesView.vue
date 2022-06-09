@@ -24,8 +24,6 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
 import DishList from "@/components/Dish/DishList.vue";
 import { useFetch } from "@/assets/composables/fetch";
 import Dish from "@/types/Dish";
-import { useCartStore } from "@/store";
-import Restaurant from "@/types/Restaurant";
 import { useCurrentRestaurant } from "@/assets/composables/CurrentRestaurant";
 
 const props = defineProps({

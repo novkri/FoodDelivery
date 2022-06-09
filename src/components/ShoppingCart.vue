@@ -38,20 +38,15 @@ import { storeToRefs } from "pinia";
 import CounterButton from "@/components/CounterButton.vue";
 import { useCurrentRestaurant } from "@/assets/composables/CurrentRestaurant";
 import { useCounter } from "@/assets/composables/Counter";
+import { useCart } from "@/assets/composables/Cart";
 
 const props = defineProps({});
 const store = useCartStore();
 
 const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
 
-// const { removeFromCart } = useCart()
-const removeFromCart = (id: number) => {
-  store.deleteDish(id);
-};
-
-//todo Q
+const { removeFromCart } = useCart();
 const { incrementAmount, decrementAmount } = useCounter();
-
 const { currentRestaurant, getRestaurantInfo } = useCurrentRestaurant(
   unref(getRestaurantId) as number
 );

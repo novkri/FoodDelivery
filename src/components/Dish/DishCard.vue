@@ -27,14 +27,14 @@
       <p v-if="item.description" class="card__description">
         {{ item.description }}
       </p>
-      <button class="add-button" @click="addToCart">В корзину</button>
+      <button class="add-button" @click="add(item)">В корзину</button>
     </div>
 
     <Teleport to="#modal-target"
       ><PopupWindow
         v-if="isModalOpen"
         @close="isModalOpen = false"
-        @confirm="createNewCart"
+        @confirm="createCart(item)"
         @decline="closeModal"
       >
         <template #body>Your Shopping Cart will be emptied</template>
@@ -50,6 +50,8 @@ import Dish from "@/types/Dish";
 import PopupWindow from "@/components/PopupWindow.vue";
 
 import { useCart } from "@/assets/composables/Cart";
+import { useCartStore } from "@/store";
+import { useModal } from "@/assets/composables/Modal";
 
 const props = defineProps({
   item: {
@@ -58,11 +60,25 @@ const props = defineProps({
   },
 });
 
-//todo Q
-const { addToCart, createNewCart, isModalOpen, closeModal, openModal } =
-  useCart(props.item);
+const store = useCartStore();
+const restaurantRouteId = inject<number>("restaurantId");
+const { addToCart, createNewCart } = useCart();
+const { isModalOpen, closeModal, openModal } = useModal();
 
-// is used in css
+const add = (item: Dish) => {
+  if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
+    openModal();
+    return;
+  }
+
+  addToCart(item);
+};
+
+const createCart = (item: Dish) => {
+  createNewCart(item);
+  closeModal();
+};
+
 const textColor = props.item?.description ? "#6a515e" : "grey";
 </script>
 

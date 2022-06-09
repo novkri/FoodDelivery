@@ -1,48 +1,29 @@
 import { useCartStore } from "@/store";
 import Dish from "@/types/Dish";
 import { inject } from "vue";
-import { useModal } from "@/assets/composables/Modal";
-import { DishOrder } from "@/types/Cart";
 
-export function useCart(item: Dish) {
-  //todo Q
-  const { isModalOpen, closeModal, openModal } = useModal();
-
+export function useCart() {
   const store = useCartStore();
   const restaurantRouteId = inject<number>("restaurantId");
 
-  const addToCart = () => {
-    if (
-      store.getOrderLength > 0 &&
-      store.getRestaurantId !== restaurantRouteId
-    ) {
-      openModal();
-      return;
-    }
-
+  const addToCart = (item: Dish) => {
     store.setRestaurant(restaurantRouteId as number);
     store.addDish(item);
   };
 
-  const createNewCart = () => {
+  const createNewCart = (item: Dish) => {
     store.clear();
     store.setRestaurant(restaurantRouteId as number);
     store.addDish(item);
-
-    closeModal();
   };
 
-  //todo Q
-  // const removeFromCart = (item: DishOrder) => {
-  //   store.deleteDish(item.dish.id);
-  // };
+  const removeFromCart = (id: number) => {
+    store.deleteDish(id);
+  };
 
   return {
     addToCart,
     createNewCart,
-    // removeFromCart,
-    isModalOpen,
-    closeModal,
-    openModal,
+    removeFromCart,
   };
 }
