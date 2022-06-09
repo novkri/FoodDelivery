@@ -4,10 +4,14 @@
       В корзине пока пусто
     </div>
 
+    <!--    class :list -> to CartList.vue component -->
     <div class="list" v-else>
+      <!--    class :restaurant -> to CartHeader.vue component -->
       <p class="restaurant" v-if="currentRestaurant">
         Order from {{ currentRestaurant.title }} restaurant
       </p>
+
+      <!--    class :list-item -> to CartItem.vue component -->
       <div class="list-item" v-for="item in getOrder" :key="item.dish.id">
         <div class="header">
           <p class="title">{{ item.dish.title }}</p>
@@ -32,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, ref, unref, watch, watchEffect } from "vue";
+import { unref, watch } from "vue";
 import { useCartStore } from "@/store";
 import { storeToRefs } from "pinia";
 import CounterButton from "@/components/CounterButton.vue";
@@ -40,11 +44,11 @@ import { useCurrentRestaurant } from "@/assets/composables/CurrentRestaurant";
 import { useCounter } from "@/assets/composables/Counter";
 import { useCart } from "@/assets/composables/Cart";
 
-const props = defineProps({});
 const store = useCartStore();
 
 const { getOrder, getTotalPrice, getRestaurantId } = storeToRefs(store);
 
+// компонент можно упростить, разбив template на 3 отдельных компонента
 const { removeFromCart } = useCart();
 const { incrementAmount, decrementAmount } = useCounter();
 const { currentRestaurant, getRestaurantInfo } = useCurrentRestaurant(
