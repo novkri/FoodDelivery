@@ -27,15 +27,15 @@
       <p v-if="item.description" class="card__description">
         {{ item.description }}
       </p>
-      <button class="add-button" @click="add(item)">В корзину</button>
+      <button class="add-button" @click="addToCart">В корзину</button>
     </div>
 
     <Teleport to="#modal-target"
       ><PopupWindow
         v-if="isModalOpen"
         @close="isModalOpen = false"
-        @confirm="createCart(item)"
-        @decline="closeModal"
+        @confirm="createNewCart"
+        @decline="declineChanges"
       >
         <template #body>Your Shopping Cart will be emptied</template>
       </PopupWindow>
@@ -46,12 +46,9 @@
 <script setup lang="ts">
 import { defineProps, inject, PropType, ref } from "vue";
 import Dish from "@/types/Dish";
+import { useCartStore } from "@/store";
 
 import PopupWindow from "@/components/PopupWindow.vue";
-
-import { useCart } from "@/assets/composables/Cart";
-import { useCartStore } from "@/store";
-import { useModal } from "@/assets/composables/Modal";
 
 const props = defineProps({
   item: {
@@ -62,23 +59,29 @@ const props = defineProps({
 
 const store = useCartStore();
 const restaurantRouteId = inject<number>("restaurantId");
-const { addToCart, createNewCart } = useCart();
-const { isModalOpen, closeModal, openModal } = useModal();
+const isModalOpen = ref(false);
 
-const add = (item: Dish) => {
+const addToCart = () => {
   if (store.getOrderLength > 0 && store.getRestaurantId !== restaurantRouteId) {
-    openModal();
+    isModalOpen.value = true;
     return;
   }
 
-  addToCart(item);
+  store.setRestaurant(restaurantRouteId as number);
+  store.addDish(props.item);
 };
 
-const createCart = (item: Dish) => {
-  createNewCart(item);
-  closeModal();
+const createNewCart = () => {
+  store.clear();
+  store.setRestaurant(restaurantRouteId as number);
+  store.addDish(props.item);
+  isModalOpen.value = false;
+};
+const declineChanges = () => {
+  isModalOpen.value = false;
 };
 
+// is used in css
 const textColor = props.item?.description ? "#6a515e" : "grey";
 </script>
 

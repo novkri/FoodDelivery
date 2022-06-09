@@ -13,12 +13,21 @@
 </template>
 
 <script async setup lang="ts">
+import { defineComponent, defineProps, onMounted, PropType, ref } from "vue";
 import RestaurantCard from "@/components/Restaurant/RestaurantCard.vue";
 import Restaurant from "@/types/Restaurant";
 import { useRouter } from "vue-router";
 import { useFetch } from "@/assets/composables/fetch";
 
+const props = defineProps({
+  // items: {
+  //   required: true,
+  //   type: Array as PropType<Restaurant[]>,
+  // },
+});
+
 const router = useRouter();
+const memes = ref<any[]>();
 
 const chooseRestaurant = (item: Restaurant) => {
   router.push({
@@ -29,9 +38,15 @@ const chooseRestaurant = (item: Restaurant) => {
   });
 };
 
-const { data, error } = useFetch<Restaurant>(
+const { data, error, isLoading } = useFetch<Restaurant>(
   "http://localhost:3000/restaurants"
 );
+
+await fetch("https://api.imgflip.com/get_memes")
+  .then((res) => res.json())
+  .then(async (data) => {
+    // console.log(data.data);
+  });
 </script>
 
 <style scoped lang="scss">

@@ -24,7 +24,8 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
 import DishList from "@/components/Dish/DishList.vue";
 import { useFetch } from "@/assets/composables/fetch";
 import Dish from "@/types/Dish";
-import { useCurrentRestaurant } from "@/assets/composables/CurrentRestaurant";
+import { useCartStore } from "@/store";
+import Restaurant from "@/types/Restaurant";
 
 const props = defineProps({
   id: {
@@ -34,8 +35,24 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
+const store = useCartStore();
 
-const { currentRestaurant } = useCurrentRestaurant(route.params.id as string);
+const currentRestaurant = ref<Restaurant>();
+
+// get current restaurant name
+onMounted(() => {
+  if (typeof route.params.id === "string") {
+    store
+      .getRestaurantInfo(route.params.id)
+      .then((value) => {
+        currentRestaurant.value = value as Restaurant;
+      })
+      .catch((err) => {
+        currentRestaurant.value = undefined;
+        throw new Error(err);
+      });
+  }
+});
 
 provide("restaurantId", route.params.id);
 
