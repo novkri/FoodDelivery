@@ -1,5 +1,8 @@
 # fdelivery
 
+- ветка master - с использованием composables
+- ветка version1 - первоначальный вариант почти без composables
+
 ## Project setup
 ```
 npm install
